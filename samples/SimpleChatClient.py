@@ -20,7 +20,7 @@ from matrix_client.api import MatrixRequestError
 from requests.exceptions import MissingSchema
 
 
-# Called when a message is recieved.
+# Called when a message is received.
 def on_message(room, event):
     if event['type'] == "m.room.member":
         if event['membership'] == "join":
@@ -43,7 +43,7 @@ def main(host, username, password, room_id_alias):
             print("Bad username or password.")
             sys.exit(4)
         else:
-            print("Check your sever details are correct.")
+            print("Check to see if your server details are correct.")
             sys.exit(2)
     except MissingSchema as e:
         print("Bad URL format.")
@@ -55,7 +55,7 @@ def main(host, username, password, room_id_alias):
     except MatrixRequestError as e:
         print(e)
         if e.code == 400:
-            print("Room ID/Alias in the wrong format")
+            print("Room ID/Alias is in the wrong format")
             sys.exit(11)
         else:
             print("Couldn't find room.")
